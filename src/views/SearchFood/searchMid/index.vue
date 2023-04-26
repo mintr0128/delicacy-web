@@ -133,7 +133,7 @@ export default {
                 })
             }
            
-        }, 300)
+        })
         const changepage = (v) => {
             finList.resList = arrGroup(secLists.value.resList, reqparmas.pageSize)[v - 1]
         }
