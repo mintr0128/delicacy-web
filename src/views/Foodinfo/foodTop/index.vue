@@ -193,7 +193,7 @@ export default {
                 namedetail: foodinfo.name,
                 u_id: store.state.user.profile.id
             })
-        }, 300)
+        })
         const sendCollect = throttle(async (data) => {
             if (!store.getters['user/isLogin']) {
                 Message({
@@ -221,7 +221,7 @@ export default {
                 namedetail: foodinfo.name,
                 u_id: store.state.user.profile.id
             })
-        }, 300)
+        })
         const getLikenumber = async (data) => {
             let res = await reqGetLikenum(data)
             midLikeCollect.like = res.result.num

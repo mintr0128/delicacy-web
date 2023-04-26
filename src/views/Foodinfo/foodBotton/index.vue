@@ -99,7 +99,7 @@ export default {
                     offsetTop: 170
                 })
             }
-        }, 300)
+        })
         const getCommonList = async () => {
             let res = await reqGetFoodcomment({
                 f_id: route.params.id
