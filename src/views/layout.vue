@@ -58,10 +58,7 @@ export default {
     const userActive = computed(() => {
       return store.state.user.userActive
     })
-    // onMounted(()=>{
-    //   store.dispatch('user/GetUserInFO')
-    //   console.log(store.state.user.profile);
-    // })
+   
     // 使用vuex 发送dispatch actions 异步提交 mutations
     store.dispatch('category/setListData')
     // 更新首页选中
