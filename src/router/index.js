@@ -28,9 +28,18 @@ const member = () => import('@/views/member')
 // 我的界面子页面
 const info = () => import('@/views/member/info')
 // 我的界面订单界面
-const order = () => import('@/views/member/order')
+
 // 我的界面订单详情页面
 const orderdetail = () => import('@/views/member/detail')
+
+
+const userDetail = () => import('@/views/member/userDetail')
+const usermange = () =>import('@/views/member/usermange')
+const usetcomments = () => import('@/views/member/usetcomments')
+
+const order = () => import('@/views/member/order')
+const uploadfood = () =>import('@/views/member/uploadfood')
+const uploadmethod = () =>import('@/views/member/uploadmethod')
 // 404页面 没有找到该页面
 const notpage = () => import('@/views/notpage')
 // 测试页面
@@ -72,12 +81,17 @@ const routes = [
         redirect: '/member/info',
         children: [
           { path: 'info', name: 'info', component: info, meta: { title: '我的信息' } },
-          { path: 'order', name: 'order', component: order, meta: { title: '我的订单' } },
-          { path: 'orderdetail/:id', name: 'orderdetail', component: orderdetail, meta: { title: '订单详情' } }
+          { path: 'order', name: 'order', component: order, meta: { title: '美食详情' } },
+          { path: 'uploadfood', name: 'uploadfood', component: uploadfood, meta: { title: '上传食谱' } },
+          { path: 'uploadmethod', name: 'uploadmethod', component: uploadmethod, meta: { title: '上传工艺' } },
+          { path: 'userDetail', name: 'userDetail', component: userDetail, meta: { title: '用户详情' } },
+          { path: 'usermange', name: 'usermange', component: usermange, meta: { title: '用户管理' } },
+          { path: 'usetcomments', name: 'usetcomments', component: usetcomments, meta: { title: '用户详情' } },
+          { path: 'orderdetail/:id', name: 'orderdetail', component: orderdetail, meta: { title: '留言管理' } }
         ]
       },
       // 协议页面
-      { path: '/agreement', name: 'agreement', component: agreement, meta: { title: '象米商城-协议' } }
+      { path: '/agreement', name: 'agreement', component: agreement, meta: { title: '美食天下-协议' } }
     ]
   },
   // 登录界面

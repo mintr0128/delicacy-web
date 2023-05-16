@@ -3,7 +3,7 @@
     <!--左侧区域-->
     <div class="login-left">
       <div class="logo-area" @click="goHome">
-        <img src="../../assets/images/whitelogo.png" alt="">
+        <span class=" text-white font-bold">去首页</span>
       </div>
       <!--标语区域-->
       <div class="login-slogan-area">
@@ -61,9 +61,8 @@
               <span>我已接受同意美食天下</span>
               <a href="javascript:;" class="agreement-link" @click="goAgreement">隐私条款</a>
             </div>
-            <div class="register" @click="goRegister">
-              注册
-            </div>
+            <rbutton :radius="40" class="register" @click="goRegister">去注册</rbutton>
+
             <!--错误提示-->
             <div class="error" v-if="errors.agreement">
               <i class="iconfont icon-cuowu"></i>

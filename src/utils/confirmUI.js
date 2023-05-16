@@ -10,17 +10,17 @@ div.setAttribute('class', 'c-confirm-container')
 document.body.appendChild(div)
 // 确认弹窗函数
 const confirm = ({ type, title, content, showClose = true }) => {
-  console.log('**')
   console.log(showClose)
   return new Promise((resolve, reject) => {
     // 用户点击取消的回调函数
     const canCelCallback = () => {
-      console.log('88')
       render(null, div)
       // 用户点击取消 页面可滚动
       document.body.style = 'overflow-y: scroll;'
       // 点击取消按钮，触发reject同时销毁组件
-      reject(new Error('已取消'))
+      reject({
+        clickType: false
+      })
     }
     // 用户点击确定的回调函数
     const confirmCallback = () => {
@@ -28,11 +28,15 @@ const confirm = ({ type, title, content, showClose = true }) => {
       // 用户点击取消 页面可滚动
       document.body.style = 'overflow-y: scroll;'
       // 点击确认按钮，触发resolve同时销毁组件
-      resolve()
+      resolve(
+        {
+          clickType: true
+        }
+      )
     }
 
     // 创建节点
-    const vNode = createVNode(rconfirm, { type, title, content, showClose , confirmCallback, canCelCallback })
+    const vNode = createVNode(rconfirm, { type, title, content, showClose, confirmCallback, canCelCallback })
     document.body.style = 'overflow: hidden;'
     // 渲染
     render(vNode, div)

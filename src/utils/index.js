@@ -32,7 +32,7 @@ export function debounce(fn, waittime = 1000) {
 
 
 //节流  一定时间内只调用一次  提交表单、高频监听事件
-export function throttle(fn, delay = 1000, isImmediate = true) {
+export function throttle(fn, delay = 700, isImmediate = true) {
   // isImmediate 为 true 时使用前缘节流，首次触发会立即执行，为 false 时使用延迟节流，首次触发不会立即执行
   let last = Date.now();
   return function () {

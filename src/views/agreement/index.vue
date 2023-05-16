@@ -1,8 +1,8 @@
 <template>
   <div class="agreement-page">
     <div class="container">
-      <div class="title"><span>XIANMI</span>隐私政策</div>
-      <div class="sutitle">象米如何保护您的隐私?</div>
+      <div class="title"><span>MEISHITIANXIA</span>隐私政策</div>
+      <div class="sutitle">美食天下如何保护您的隐私?</div>
       <div class="content">
         <p>Cookie是您登录网站或浏览网络内容时，为收集、标识和存储您访问、使用本产品/服务时的信息，网站服务器传输并存放在您的电脑、移动电话或其他本地终端设备内的小型文件，通常包含标识符、站点名称以及一些号码和字符。我们网站、在线服务、互动应用程序、电子邮箱和广告可能会使用 Cookies 和其他同类技术，如像素标签和网站信标。</p>
         <p>我们通过Cookies或同类技术收集、使用的信息可能包括设备型号、操作系统、设备标识符、登录IP地址信息、浏览器类型、互联网服务提供商(ISP)，以及缓存您的浏览信息、点击信息、引用/退出页面、在我们网站上浏览的文件(例如，html页面、图形)、日期/时间戳和/或点击流数据日志信息，以查看您的网络环境。另请知悉，Cookies可能会存储用户偏好及其他信息。</p>

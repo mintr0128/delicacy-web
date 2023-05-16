@@ -5,13 +5,13 @@
       <div class="left-user-avatar">
         <img :src="userpic" alt="">
         <div class="welcome-text">
-          <h3>你好! {{userProfile.nickname}}</h3>
+          <h3>你好! {{ userProfile.nickname }}</h3>
           <p>欢迎来到美食天下！</p>
         </div>
       </div>
       <div class="right-user-select">
         <ul>
-          <li @click=" showAddressdialog = true">
+          <li @click="showAddressdialog = true">
             <i class="iconfont icon-huiyuan"></i>
             <p>更改密码</p>
           </li>
@@ -28,51 +28,42 @@
     </div>
     <!--我的收藏数据-->
     <div class="my-collect">
-      <myCenter title="个人中心" :profile="profile"></myCenter>
+      <myCenter title="个人信息" :profile="profile"></myCenter>
       <!-- <rowitme  :data-list="hotProduct" ></rowitme> -->
     </div>
-    <!--获取我的足迹-->
-    <div class="my-history">
-      <rowitme title="我的足迹">
-        <div class="myhistory-list" v-if="myhistStory.length>0">
-          <div class="hitstory-item" v-for="(item,index) in myhistStory" :key="index" @click="goUrl(item)">
-            <img :src="item.spu.picture" alt="">
-            <div class="item-content">
-              <p>{{item.spu.name}}</p>
-            </div>
-          </div>
-        </div>
-        <div class="empty"  >
-          <rempty></rempty>
-        </div>
-      </rowitme>
-    </div>
+    <!--我的点赞-->
+    <mylikelist></mylikelist>
+     <!--我的收藏-->
+    <mycollect></mycollect>
+    <!--我的评论-->
+    <mycomment></mycomment>
     <changepwd v-model:visible="showAddressdialog" @addressSuccess="addressSuccess"> </changepwd>
   </div>
-
-
 </template>
 
 <script>
 // veux
 import { useStore } from 'vuex'
 // vue
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, reactive } from 'vue'
 // 消息提示
 import message from '@/utils/messageUI'
 // 商品列表数据
 import rowitme from '../component/r-rowitem'
-// api
-import { getHotProduct, getBrowseHistory } from '@/api/member'
+
 // vuerouter
 import { useRouter } from 'vue-router'
 import changepwd from './changePwd/index.vue'
 // 空值组件
 import rempty from '@/components/r-empty'
 import myCenter from './myCenter/index.vue'
+
+import mylikelist from './mylikelist/index.vue'
+import mycollect from './mycollect/index.vue'
+import mycomment from './mycomment/index.vue'
 export default {
   name: 'info',
-  setup () {
+  setup() {
     // vuex
     const store = useStore()
     // vue-router
@@ -94,39 +85,11 @@ export default {
         offsetTop: 170
       })
     }
-    const userpic = computed(()=>{
-        return store.state.user.profile.user_pic
+    const userpic = computed(() => {
+      return store.state.user.profile.user_pic
     })
-
-    
-    // 获取我的收藏数据
-    const getMycollect = async () => {
-      const params = {
-        // 商品ID
-        id: '',
-        // 数量限制
-        limit: 4,
-        // 热销类型，1为24小时，2为周榜，3为总榜，默认为1
-        type: 2
-      }
-      const { result } = await getHotProduct(params)
-      hotProduct.value = result
-    }
-    // 获取我的足迹
-    const getHistoryData = async () => {
-      const params = {
-        page: 1,
-        pageSize: 5
-      }
-      const { result: { items } } = await getBrowseHistory(params)
-      console.log(items)
-      myhistStory.value = items
-    }
     onMounted(() => {
-      // 获取我的我的收藏数据
-      getMycollect()
-      // 获取我的足迹
-      getHistoryData()
+     // getLikeFood()
     })
     // 跳转链接
     const goUrl = (item) => {
@@ -135,9 +98,8 @@ export default {
     const profile = computed(() => {
       return store.state.user.profile
     })
-    const addressSuccess = ()=>{
+    const addressSuccess = () => {
       //成功回调
-      console.log(1);
     }
     return {
       userProfile,
@@ -148,22 +110,26 @@ export default {
       profile,
       showAddressdialog,
       addressSuccess,
-      userpic
+      userpic,
     }
   },
   components: {
     rowitme,
     rempty,
     myCenter,
-    changepwd
+    changepwd,
+    mylikelist,
+    mycollect,
+    mycomment
   }
 }
 </script>
 
 <style scoped lang="scss">
-.info-page{
+.info-page {
   width: 100%;
-  .top-info{
+
+  .top-info {
     border-radius: $borderRadius;
     width: 100%;
     height: 100px;
@@ -177,11 +143,13 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .left-user-avatar{
+
+    .left-user-avatar {
       display: flex;
       align-items: center;
       height: 60px;
-      img{
+
+      img {
         width: 60px;
         height: 60px;
         border-radius: 50%;
@@ -189,37 +157,45 @@ export default {
         border: 2px solid #fff;
         margin-left: 10px;
       }
-      .welcome-text{
+
+      .welcome-text {
         height: 100%;
         display: flex;
         flex-direction: column;
         margin-left: 10px;
         justify-content: space-between;
         color: #fff;
-        h3{
+
+        h3 {
           margin-top: 5px;
         }
-        p{
+
+        p {
           margin-bottom: 5px;
         }
       }
     }
-    .right-user-select{
+
+    .right-user-select {
       margin-right: 150px;
+
       ul {
         display: flex;
         align-items: center;
-        li{
+
+        li {
           display: flex;
           flex-direction: column;
           align-items: center;
           margin-left: 20px;
           cursor: pointer;
-          p{
-            font-size:14px;
+
+          p {
+            font-size: 14px;
             color: #fff;
           }
-          i{
+
+          i {
             font-size: 28px;
             color: #fff;
           }
@@ -228,14 +204,46 @@ export default {
     }
   }
 }
-.my-collect, .my-history{
+
+.r-row-item-component {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+
+  .row-head {
+    width: 100%;
+    padding: 10px 0 15px 0;
+
+    p {
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 40px;
+    }
+
+    border-bottom: 1px solid #f5f5f5;
+  }
+
+  .row-body {
+    margin-top: 20px;
+
+    .product-list {
+      //display: flex;
+    }
+  }
+}
+
+.my-collect,
+.my-history {
   margin-top: 20px;
   border-radius: $borderRadius;
   overflow: hidden;
-  .myhistory-list{
+
+  .myhistory-list {
     display: flex;
     align-items: center;
-    .hitstory-item{
+
+    .hitstory-item {
       margin-right: 30px;
       cursor: pointer;
       width: 160px;
@@ -243,7 +251,8 @@ export default {
       border-radius: 10px;
       overflow: hidden;
       position: relative;
-      .item-content{
+
+      .item-content {
         bottom: -160px;
         border-radius: 10px;
         position: absolute;
@@ -252,19 +261,20 @@ export default {
         color: #fff;
         padding: 10px;
         box-sizing: border-box;
-        background-color: rgba(0,0,0,0.3);
+        background-color: rgba(0, 0, 0, 0.3);
         transition: all .3s;
       }
-      &:hover{
-        .item-content{
+
+      &:hover {
+        .item-content {
           bottom: 0;
         }
       }
-      img{
+
+      img {
         width: 100%;
       }
     }
   }
 }
-
 </style>

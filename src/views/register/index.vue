@@ -3,7 +3,7 @@
     <!--左侧区域-->
     <div class="login-left bg-blue-500">
       <div class="logo-area" @click="goHome">
-        <img src="../../assets/images/whitelogo.png" alt="">
+        <span class=" text-white font-bold">去首页</span>
       </div>
       <!--标语区域-->
       <div class="login-slogan-area">
@@ -37,7 +37,6 @@
                 <span class="error-text text-red-500 absolute top-1">{{ errors.account }}</span>
               </div>
             </div>
-
           </div>
           <!--密码-->
           <div class="password-area flex mt-8">
@@ -97,33 +96,7 @@
             </div>
           </div>
           <div>
-
           </div>
-          <!-- <div>
-            <input class="ant-input" type="text" name="" id="">
-          </div> -->
-          <!--其他登录方式-->
-          <!-- <div class="other-login-type">
-            <p class="title">其他登录方式</p>
-            <ul>
-              <li @click="gologinType('wechat')">
-                <div class="login-type-icon">
-                  <img src="../../assets/images/icon_Wechat_Highlight.svg" alt="">
-                </div>
-              </li>
-              <li @click="gologinType('apple')">
-                <div class="login-type-icon">
-                  <img src="../../assets/images/applelogin.png" alt="">
-                </div>
-              </li>
-              <li @click="gologinType('qq')">
-                <div class="hot-tag">new</div>
-                <div class="login-type-icon">
-                  <i class="iconfont icon-QQ"></i>
-                </div>
-              </li>
-            </ul>
-          </div> -->
         </Form>
       </div>
     </div>
@@ -191,12 +164,12 @@ export default {
 
     // 用户点击登录按钮
     const register = async () => {
-    
+
       // 登录之前验证表单 校验通过请求登录api接口
       const verify = await formCom.value.validate()
       if (!verify) return
       // 登录参数
-      
+
       let userinfo = {
         username: formdata.account,
         password: formdata.password,
@@ -207,7 +180,7 @@ export default {
       loginloading.value = true
       // 登录
       try {
-      
+
         console.log(userinfo);
         let res = await reqRegisterUser(userinfo)
 
@@ -411,12 +384,12 @@ export default {
             color: #484848;
           }
 
-        
+
         }
 
         .password-area {
           // width: 500px;
-         
+
           position: relative;
 
           .iconfont {

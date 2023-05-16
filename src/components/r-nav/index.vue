@@ -21,22 +21,19 @@
               <a href="javascript:;" @click="goUrl('register')">免费注册</a>
             </li>
           </template>
-          <li>
+          <!-- <li>
             <a href="javascript:;" @click="goUrl('order')">我的订单</a>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <a href="javascript:;" @click="goUrl('vip')">会员中心</a>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <a href="javascript:;" @click="goUrl('pagetest')">帮助中心</a>
-          </li>
+          </li> -->
           <li>
-            <a href="javascript:;" @click="goUrl('member')">个人中心</a>
+            <a style="padding-left: 14px;" href="javascript:;" @click="goUrl('member')">个人中心</a>
           </li>
-          <li>
-            <i class="iconfont icon-shouji"></i>
-            <a href="javascript:;">手机版</a>
-          </li>
+
         </ul>
       </div>
     </div>

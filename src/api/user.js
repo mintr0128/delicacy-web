@@ -45,7 +45,7 @@ export const reqInsFoodCollect = data => ajax({
 })
 
 //修改密码
-export const  updateUserPassword = data => ajax({
+export const updateUserPassword = data => ajax({
   url: '/limit/userinfo/updateUserPassword',
   method: 'post',
   data: data
@@ -57,3 +57,41 @@ export const reqInsUserPic = data => ajax({
   method: 'post',
   data: data
 })
+
+export const reqGetLikeFood = () => ajax.get('/limit/userinfo/getLikeFood')
+
+export const reqGetCollectFood = () => ajax.get('/limit/userinfo/getCollectFood')
+
+export const reqGetuserComment = () => ajax.get('/limit/userinfo/getuserComment')
+
+export const reqGetAdminallfood = () => ajax.get('/limit/userinfo/getAdminallfood')
+
+export const reqDeleteAdminallfood = (data) => ajax({
+  url: '/limit/userinfo/deleteAdminallfood',
+  method: 'post',
+  data: data
+})
+
+export const reqGetAdminalluser = () => ajax.get('/limit/userinfo/getAdminalluser')
+
+export const reqDeleteAdminalluser = (data) => ajax({
+  url: '/limit/userinfo/deleteAdminalluser',
+  method: 'post',
+  data: data
+})
+
+export const reqGetAdminallComment = () => ajax.get('/limit/userinfo/getAdminallComment')
+
+export const reqDeleteAdminallComment = (data) => ajax({
+  url: '/limit/userinfo/deleteAdminallComment',
+  method: 'post',
+  data: data
+})
+
+
+export const reqGetAdminFoodClassify = () => ajax.get('/limit/userinfo/getAdminFoodClassify')
+
+
+export const reqCanInsertFoodMethod = () => ajax.get('/limit/userinfo/canInsertFoodMethod')
+
+

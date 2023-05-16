@@ -1,6 +1,6 @@
 <template>
   <div class="c-loading-components">
-    <img src="../../../assets/images/logo.svg" alt="" class="logo-loading">
+    <img src="../../../assets/images/logo-main-png.png" alt="" class="logo-loading">
     <p>{{ loadingtext }}</p>
   </div>
 </template>

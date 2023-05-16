@@ -59,7 +59,6 @@
             </form>
             <rbutton class="btn" @click="insertFood">提交</rbutton>
           </div>
-          
         </div>
       </div>
     </div>
@@ -88,7 +87,7 @@ export default {
       f_id: "",
       g_id: "",
       picture:"",
-      
+
     })
 
     let picData = reactive({
@@ -131,7 +130,7 @@ export default {
       }
 
     }
-   
+
     const onchanges = async (event) => {
       const file = event.target.files[0]
       let fd = new FormData()
@@ -150,14 +149,14 @@ export default {
             type: "success",
             text: res.message
           })
-         
+
       }else{
         Message({
             type: "error",
             text: res.message
           })
       }
-      
+
     }
 
     return {

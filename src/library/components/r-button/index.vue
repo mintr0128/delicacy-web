@@ -132,7 +132,7 @@ export default {
     }
 
     &.warning {
-      background-color: $warnColor;
+      background-color: #ff4d4f;
       color: #fff;
     }
 

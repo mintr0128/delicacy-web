@@ -1,7 +1,7 @@
 <template>
   <div class="logo" :style="logoWidthStyle" @click="goindex">
-    <img src="../../assets/images/logo.svg" alt=""  v-if="logoStyle === 'header'" style="width: 70%">
-    <img src="../../assets/images/logo-h.svg" alt=""  v-else>
+    <img src="../../assets/images/logo-main-png.png" alt=""  v-if="logoStyle === 'header'" style="width: 70%">
+   
   </div>
 </template>
 

@@ -15,7 +15,7 @@
       </div>
       <!--confirm footer-->
       <div class="confirm-fooer">
-        <rbutton type="small" @click="canCelCallback" v-if="showClose">取消</rbutton>
+        <rbutton type="primary" @click="canCelCallback" v-if="showClose">取消</rbutton>
         <rbutton type="primary" size="default" @click="confirmCallback">确定</rbutton>
       </div>
     </div>

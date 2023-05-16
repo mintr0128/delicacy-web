@@ -6,39 +6,47 @@
         <li>
           <RouterLink to="/member/info" exact-active-class="menuActive">个人中心</RouterLink>
         </li>
-        <li>个人信息</li>
+        <!-- <li>个人信息</li>
         <li>安全设置</li>
         <li>地址管理</li>
-        <li>我的积分</li>
+        <li>我的积分</li> -->
       </ul>
     </div>
     <div class="r-menu-item">
-      <div class="r-menu-title">交易管理</div>
+      <div class="r-menu-title">美食管理</div>
       <ul>
         <li>
-          <RouterLink to="/member/order" exact-active-class="menuActive">订单中心</RouterLink>
+          <RouterLink to="/member/order" exact-active-class="menuActive">美食详情</RouterLink>
         </li>
-        <li>优惠卷</li>
-        <li>礼品卡</li>
-        <li>晒单评价</li>
-        <li>售后服务</li>
+        <li>
+          <RouterLink to="/member/uploadfood" exact-active-class="menuActive">上传食谱</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/member/uploadmethod" exact-active-class="menuActive">上传工艺</RouterLink>
+        </li>
       </ul>
     </div>
     <div class="r-menu-item">
-      <div class="r-menu-title">我的收藏</div>
+      <div class="r-menu-title">用户管理</div>
       <ul>
-        <li>收藏的商品</li>
-        <li>收藏的专题</li>
-        <li>关注的品牌</li>
+        <li>
+          <RouterLink to="/member/userDetail" exact-active-class="menuActive">用户详情</RouterLink>
+        </li>
+        <!-- <li>
+          <RouterLink to="/member/usermange" exact-active-class="menuActive">用户管理</RouterLink>
+        </li> -->
+        <li>
+          <RouterLink to="/member/usetcomments" exact-active-class="menuActive">留言管理</RouterLink>
+        </li>
       </ul>
     </div>
-    <div class="r-menu-item">
+    <!-- <div class="r-menu-item">
       <div class="r-menu-title">帮助中心</div>
       <ul>
         <li>帮助中心</li>
         <li>在线客服</li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -49,22 +57,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.r-menu-component{
+.r-menu-component {
   width: 248px;
   background-color: #fff;
   border-radius: $borderRadius;
   box-sizing: border-box;
   padding: 20px;
-  .r-menu-item{
+
+  .r-menu-item {
     border-bottom: 1px solid #f5f5f5;
     padding-bottom: 20px;
     margin-bottom: 30px;
-    .r-menu-title{
+
+    .r-menu-title {
       font-size: 16px;
       font-weight: bold;
       position: relative;
       padding-left: 10px;
-      &:after{
+
+      &:after {
         content: '';
         display: inline-block;
         width: 3px;
@@ -75,9 +86,11 @@ export default {
         border-radius: 5px;
       }
     }
-    ul{
+
+    ul {
       margin-top: 20px;
-      li{
+
+      li {
         width: 100%;
         border-radius: 6px;
         display: flex;
@@ -88,11 +101,12 @@ export default {
         transition: all .3s;
         cursor: pointer;
 
-        a{
+        a {
           display: block;
           width: 100%;
           transition: all .3s;
-          &.menuActive{
+
+          &.menuActive {
             display: block;
             border-radius: 6px;
             padding: 10px;
@@ -102,7 +116,8 @@ export default {
             color: #fff;
             font-weight: bold;
           }
-          &:hover{
+
+          &:hover {
             display: block;
             border-radius: 6px;
             padding: 10px;
@@ -116,9 +131,9 @@ export default {
 
       }
     }
-    &:last-child{
+
+    &:last-child {
       border-bottom: none;
     }
   }
-}
-</style>
+}</style>

@@ -18,7 +18,7 @@ export default {
     const currentInde = ref(0)
     // tab数据
     const tabData = reactive([
-      { id: 0, name: '全部订单' },
+      { id: 0, name: '全部食物' },
       { id: 1, name: '代付款' },
       { id: 2, name: '代发货' },
       { id: 3, name: '待收货' },

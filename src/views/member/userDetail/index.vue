@@ -4,7 +4,7 @@
       <div class="r-row-item-component">
         <!--标题区域-->
         <div class="row-head">
-          <p>美食管理</p>
+          <p>用户管理</p>
         </div>
         <!--商品列表区域-->
         <div class="row-body">
@@ -15,11 +15,10 @@
                   <table style="table-layout: auto;">
                     <thead class="ant-table-thead">
                       <tr>
-                        <th class="ant-table-cell">食物名称</th>
-                        <th class="ant-table-cell">菜品类别</th>
-                        <th class="ant-table-cell">菜品口味</th>
-                        <th class="ant-table-cell">菜品主料</th>
-                        <th class="ant-table-cell">菜品图片</th>
+                        <th class="ant-table-cell">标识(id)</th>
+                        <th class="ant-table-cell">账号</th>
+                        <th class="ant-table-cell">昵称</th>
+                        <th class="ant-table-cell">邮箱</th>
                         <th class="ant-table-cell">操作</th>
                       </tr>
                     </thead>
@@ -27,18 +26,13 @@
                       <template v-if="showlikeFoodList.showlist.length != 0">
                         <tr v-for="item, index in showlikeFoodList.showlist" :key="index"
                           class="ant-table-row ant-table-row-level-0">
-                          <td class="ant-table-cell">{{ item.name }}</td>
-                          <td v-if="item.auth" class="ant-table-cell">{{ item.auth }}</td>
-                          <td v-if="item.taste" class="ant-table-cell">{{ item.taste }}</td>
-                          <td v-if="item.zhuliao" class="ant-table-cell">
-                            {{ item.zhuliao }}
+                          <td class="ant-table-cell">{{ item.id }}</td>
+                          <td v-if="item.username" class="ant-table-cell">{{ item.username }}</td>
+                          <td v-if="item.nickname" class="ant-table-cell">{{ item.nickname }}</td>
+                          <td v-if="item.email" class="ant-table-cell">
+                            {{ item.email }}
                           </td>
-                          <th v-if="item.zhuliao" class="ant-table-cell">
-                            <img :src="item.picture" alt="" v-if="item.picture" class=" w-24 h-24 p-2 rounded-2xl">
-                          </th>
                           <td class="ant-table-cell">
-                            <rbutton @click="goDeatli(item.id, item.auth)" :height="35" :width="70" class="mb-2">去查看
-                            </rbutton>
                             <rbutton @click="deleteDeatli(item)" :height="35" :width="70" color="#ff4d4f">删除</rbutton>
                           </td>
                         </tr>
@@ -73,7 +67,7 @@ import { ref, watch, onMounted, reactive } from 'vue'
 // // 订单组件
 // import orderitem from './component/r-orderitem'
 // api
-import { reqGetAdminallfood, reqDeleteAdminallfood } from "@/api/user"
+import { reqGetAdminalluser,reqDeleteAdminalluser } from "@/api/user"
 
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
@@ -81,7 +75,7 @@ import { useStore } from 'vuex'
 import confirm from '@/utils/confirmUI'
 import message from '@/utils/messageUI'
 export default {
-  name: 'fooddetails',
+  name: 'userDetail',
   setup() {
     onMounted(() => {
       getLikeFood()
@@ -92,7 +86,8 @@ export default {
       showlist: []
     })
     const getLikeFood = async () => {
-      let res = await reqGetAdminallfood()
+      finList.likeArrs=[]
+      let res = await reqGetAdminalluser()
       if (res.status == 200) {
         if (Array.isArray(res.results)) {
           res.results.forEach(v => {
@@ -143,13 +138,12 @@ export default {
     }
 
     const deleteDeatli = (v) => {
-
       confirm({
         type: 'warn',
         title: '温馨提示！',
-        content: '确定要删除菜品吗？',
+        content: '确定删除该用户吗？',
       }).then(vs => {
-        reqDeleteAdminallfood({
+        reqDeleteAdminalluser({
           id: v.id
         }).then(res => {
           if (res.status == 200) {
@@ -239,6 +233,9 @@ export default {
   .row-body {
     margin-top: 20px;
 
+    .product-list {
+      //display: flex;
+    }
   }
 }
 

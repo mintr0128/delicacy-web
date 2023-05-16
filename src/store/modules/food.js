@@ -30,23 +30,23 @@ const food = {
                 let res = await reqGetFoodclassify()
                 if (res.status == 200) {
                     commit('GETCLASSIFY', res.result)
-
                 } else {
                     Message({
                         type: 'error',
                         text: '获取搜索数据失败！',
-                        offsetTop: 30,
-                        duration: 20000
                     })
                 }
             }
-
-
-
         },
         async getSearchShowlist({ commit }, data) {
             let { status, name, result } = await reqSearchShowlist(data)
             if (status == 200) {
+                if (result.length == 0) {
+                    Message({
+                        type: 'warn',
+                        text: '暂无结果，请重新搜索！',
+                    })
+                }
                 commit('GETSEARCHSHOWLIST', {
                     name: name,
                     result: result
@@ -56,7 +56,6 @@ const food = {
         async getUsersearchlist({ commit }, data) {
             let { status, name, result } = await reqUsersearchlist(data)
             if (status == 200) {
-
                 commit('GETSEARCHSHOWLIST', {
                     name: name,
                     result: result
@@ -64,6 +63,5 @@ const food = {
             }
         }
     },
-
 }
 export default food

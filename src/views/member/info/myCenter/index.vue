@@ -7,7 +7,7 @@
         <!--商品列表区域-->
         <div class="row-body">
             <div>
-                <ul class=" text-lg">
+                <ul class="">
                     <li class="mb-2 p-4 flex">昵称:<div class="ml-4"><span class="">{{ profile.nickname }}</span></div>
                     </li>
                     <li class="mb-2 p-4 flex">账号:<div class="ml-4"><span class="">{{ profile.username }}</span></div>
@@ -28,7 +28,7 @@
         </div>
     </div>
 </template>
-  
+
 <script>
 import message from '@/utils/messageUI'
 import { useStore } from 'vuex'
@@ -78,7 +78,7 @@ export default {
     }
 }
 </script>
-  
+
 <style scoped lang="scss">
 .r-row-item-component {
     width: 100%;
@@ -119,4 +119,3 @@ export default {
     }
 }
 </style>
-  

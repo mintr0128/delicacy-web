@@ -87,6 +87,7 @@ export default {
         watch(() => secLists, (v) => {
             finList.name = v.value.name
             finList.resList = arrGroup(v.value.resList, reqparmas.pageSize)[0]
+            
         }, {
             deep: true,
             immediate: true
@@ -117,10 +118,10 @@ export default {
                 return
             }
             
-            userCollect.namedetail = data[0].name
+            userCollect.namedetail = data.name
             userCollect.u_id = store.state.user.profile.id
             userCollect.id = uuidv4()
-            userCollect.f_id = data[0].id
+            userCollect.f_id = data.id
             userCollect.type = 1
             console.log(userCollect);
             let res = await reqInsFoodCollect(userCollect)
