@@ -133,7 +133,7 @@ export default {
       return flag
     }
     const insertFood = async () => {
-      formData.u_id = store.state.user.profile.id
+      formData.u_id = null
       formData.like = 0
       formData.collect = 0
       formData.comment = null
@@ -145,7 +145,7 @@ export default {
         return
       }
 
-      let res = await reqInsFoodDeatils(formData)
+     let res = await reqInsFoodDeatils(formData)
       if (res.status == 200) {
         Message({
           type: "success",

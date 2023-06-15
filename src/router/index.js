@@ -2,6 +2,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 // vuex
 import store from '@/store'
+import Message from '@/utils/messageUI'
 // lanyout组件
 const layout = () => import('@/views/layout')
 // home组件
@@ -34,12 +35,12 @@ const orderdetail = () => import('@/views/member/detail')
 
 
 const userDetail = () => import('@/views/member/userDetail')
-const usermange = () =>import('@/views/member/usermange')
+const usermange = () => import('@/views/member/usermange')
 const usetcomments = () => import('@/views/member/usetcomments')
 
 const order = () => import('@/views/member/order')
-const uploadfood = () =>import('@/views/member/uploadfood')
-const uploadmethod = () =>import('@/views/member/uploadmethod')
+const uploadfood = () => import('@/views/member/uploadfood')
+const uploadmethod = () => import('@/views/member/uploadmethod')
 // 404页面 没有找到该页面
 const notpage = () => import('@/views/notpage')
 // 测试页面
@@ -81,12 +82,86 @@ const routes = [
         redirect: '/member/info',
         children: [
           { path: 'info', name: 'info', component: info, meta: { title: '我的信息' } },
-          { path: 'order', name: 'order', component: order, meta: { title: '美食详情' } },
-          { path: 'uploadfood', name: 'uploadfood', component: uploadfood, meta: { title: '上传食谱' } },
-          { path: 'uploadmethod', name: 'uploadmethod', component: uploadmethod, meta: { title: '上传工艺' } },
-          { path: 'userDetail', name: 'userDetail', component: userDetail, meta: { title: '用户详情' } },
-          { path: 'usermange', name: 'usermange', component: usermange, meta: { title: '用户管理' } },
-          { path: 'usetcomments', name: 'usetcomments', component: usetcomments, meta: { title: '用户详情' } },
+          {
+            path: 'order', name: 'order', component: order, meta: { title: '美食详情' },
+            beforeEnter: (to, from, next) => {
+              if (store.state.user.profile.id == 1) {
+                next()
+              } else {
+                Message({
+                  type: 'error',
+                  text: '没有权限！',
+                  offsetTop: 170
+                })
+                router.push(from.path)
+              }
+
+            }
+          },
+          {
+            path: 'uploadfood', name: 'uploadfood', component: uploadfood, meta: { title: '上传食谱' },
+            beforeEnter: (to, from, next) => {
+              if (store.state.user.profile.id == 1) {
+                next()
+              } else {
+                Message({
+                  type: 'error',
+                  text: '没有权限！',
+                  offsetTop: 170
+                })
+                router.push(from.path)
+              }
+
+            }
+          },
+          {
+            path: 'uploadmethod', name: 'uploadmethod', component: uploadmethod, meta: { title: '上传工艺' },
+            beforeEnter: (to, from, next) => {
+              if (store.state.user.profile.id == 1) {
+                next()
+              } else {
+                Message({
+                  type: 'error',
+                  text: '没有权限！',
+                  offsetTop: 170
+                })
+                router.push(from.path)
+              }
+
+            }
+          },
+          {
+            path: 'userDetail', name: 'userDetail', component: userDetail, meta: { title: '用户详情' },
+            beforeEnter: (to, from, next) => {
+              if (store.state.user.profile.id == 1) {
+                next()
+              } else {
+                Message({
+                  type: 'error',
+                  text: '没有权限！',
+                  offsetTop: 170
+                })
+                router.push(from.path)
+              }
+            }
+          },
+          { path: 'usermange', name: 'usermange', component: usermange, meta: { title: '用户管理' }, },
+          {
+            path: 'usetcomments', name: 'usetcomments', component: usetcomments, meta: { title: '用户详情' },
+            beforeEnter: (to, from, next) => {
+              if (store.state.user.profile.id == 1) {
+                next()
+              } else {
+                Message({
+                  type: 'error',
+                  text: '没有权限！',
+                  offsetTop: 170
+                })
+                router.push(from.path)
+              }
+
+            }
+          },
           { path: 'orderdetail/:id', name: 'orderdetail', component: orderdetail, meta: { title: '留言管理' } }
         ]
       },

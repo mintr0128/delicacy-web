@@ -12,7 +12,7 @@
         <li>我的积分</li> -->
       </ul>
     </div>
-    <div class="r-menu-item">
+    <div class="r-menu-item" v-if="isAdmin">
       <div class="r-menu-title">美食管理</div>
       <ul>
         <li>
@@ -26,7 +26,7 @@
         </li>
       </ul>
     </div>
-    <div class="r-menu-item">
+    <div class="r-menu-item" v-if="isAdmin">
       <div class="r-menu-title">用户管理</div>
       <ul>
         <li>
@@ -51,8 +51,23 @@
 </template>
 
 <script>
+import { computed, reactive, ref, onMounted } from 'vue'
+import { useStore } from 'vuex'
 export default {
-  name: 'rmenu'
+  name: 'rmenu',
+  setup() {
+    const store = useStore()
+    const isAdmin = computed(() => {
+      return store.state.user.profile.id == 1?true:false
+
+    })
+    onMounted(()=>{
+      console.log(isAdmin.value);
+    })
+    return {
+      isAdmin
+    }
+  }
 }
 </script>
 
@@ -136,4 +151,5 @@ export default {
       border-bottom: none;
     }
   }
-}</style>
+}
+</style>

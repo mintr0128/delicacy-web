@@ -1,6 +1,5 @@
 <template>
   <div class="my-history">
-
     <div class="r-row-item-component">
       <!--标题区域-->
       <div class="row-head">
@@ -71,7 +70,6 @@ import { useStore } from 'vuex'
 export default {
   name: 'mycollect',
   setup() {
-
     onMounted(() => {
       getLikeFood()
     })
@@ -108,7 +106,6 @@ export default {
       name: '',
       likeArrs: [],
     })
-
     const changepage = (v) => {
       showlikeFoodList.showlist = arrGroup(finList.likeArrs, reqparmas.pageSize)[v - 1]
     }

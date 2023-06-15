@@ -144,7 +144,7 @@ export default {
         img {
           border-radius: 4px;
           display: block;
-          width: 70%;
+          width: 60%;
           margin-bottom: 15px;
         }
 
