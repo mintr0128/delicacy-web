@@ -21,6 +21,12 @@ $txBulecolor: #3B82F6;
 .bg-white {
     background-color: #fff;
 }
+.bg-primary-color{
+    background-color: $txColor;
+}
+.primary-color{
+    color: $txColor;
+}
 
 .min-height {
     min-height: 380px;
@@ -58,14 +64,14 @@ $txBulecolor: #3B82F6;
         box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 
         .hov-green {
-            color: #19ce60;
+            color: $txColor;
         }
     }
 }
 
 .hover-green {
     &:hover {
-        color: #19ce60;
+        color: $txColor;
     }
 }
 
@@ -111,15 +117,15 @@ $txBulecolor: #3B82F6;
     transition: all .3s;
 
     &:hover {
-        border-color: #40a9ff;
+        border-color: $helpColor;
         border-right-width: 1px !important;
     }
 
     &:focus {
-        border-color: #40a9ff;
+        border-color: $helpColor;
         border-right-width: 1px !important;
         outline: 0;
-        box-shadow: 0 0 0 2px #1890ff33;
+        box-shadow: 0 0 0 2px #18ffae33;
     }
 
     &.error {

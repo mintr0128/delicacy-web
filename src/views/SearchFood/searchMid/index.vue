@@ -22,10 +22,10 @@
                                 </div>
                                 <div class=" mt-2 mb-2  hov-green">
                                     <div>
-                                        <span class="text-base text-green-500"> {{ item.name }}</span>
+                                        <span class="text-base primary-color"> {{ item.name }}</span>
                                     </div>
                                 </div>
-                                <div class=" mb-2 text-green-500">
+                                <div class=" mb-2 primary-color">
                                     <i class="">已有<span class="">{{ item.comml.length }}</span>条评价</i>
                                 </div>
                                 <div class=" flex justify-between w-full">
@@ -87,7 +87,7 @@ export default {
         watch(() => secLists, (v) => {
             finList.name = v.value.name
             finList.resList = arrGroup(v.value.resList, reqparmas.pageSize)[0]
-            
+
         }, {
             deep: true,
             immediate: true
@@ -117,7 +117,7 @@ export default {
                 })
                 return
             }
-            
+
             userCollect.namedetail = data.name
             userCollect.u_id = store.state.user.profile.id
             userCollect.id = uuidv4()
@@ -133,7 +133,7 @@ export default {
                     offsetTop: 170
                 })
             }
-           
+
         })
         const changepage = (v) => {
             finList.resList = arrGroup(secLists.value.resList, reqparmas.pageSize)[v - 1]

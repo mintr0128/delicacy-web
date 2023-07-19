@@ -112,7 +112,7 @@ export default {
 
       .icon-jiantou {
         font-size: 10px !important;
-        color: #19ce60;
+        color: $txColor;
         margin-left: 5px;
       }
     }

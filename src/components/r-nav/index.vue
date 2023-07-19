@@ -123,7 +123,7 @@ export default {
 
 <style scoped lang="scss">
 .r-nav-components {
-  background-color: #19ce60;
+  background-color: $txColor;
   padding-top: 14px;
   padding-bottom: 14px;
   position: relative;

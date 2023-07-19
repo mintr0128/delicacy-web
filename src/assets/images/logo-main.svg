@@ -9,7 +9,7 @@
         font-family: "Adobe Heiti Std";
         text-transform: uppercase;
       }
-      .st0{fill-rule:evenodd;clip-rule:evenodd;fill:#19CE60;}
+      .st0{fill-rule:evenodd;clip-rule:evenodd;fill:$txColor;}
     </style>
   </defs>
   <path class="st0" d="M60.88,141.7l30.29,0.02c2.19-4.01,0.94-11.09-2.17-15.27c-8.39-11.24-26.12-7.09-28.86,6.52

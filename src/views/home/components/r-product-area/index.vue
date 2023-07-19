@@ -7,7 +7,7 @@
                     <div class="mr-4 text-gray-400">美味{{ areaData.name }}</div>
                     <div class="text-gray-400">营养健康</div>
                 </div>
-                <div class="text-green-400 " @click="goSearch(areaData)">
+                <div class="primary-color " @click="goSearch(areaData)">
                     查看更多>
                 </div>
             </div>
@@ -28,7 +28,7 @@
         </div>
     </div>
 </template>
-  
+
 <script>
 import { computed, ref, reactive } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -65,7 +65,7 @@ export default {
             })
         }
         const goUrl = (v) => {
-            
+
             router.push({
                 name: 'food',
                 params: {
@@ -83,7 +83,7 @@ export default {
     }
 }
 </script>
-  
+
 <style scoped lang="scss">
 .radius {
     border-radius: 8px;
@@ -98,4 +98,3 @@ export default {
     height: 21rem;
 }
 </style>
-  

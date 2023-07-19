@@ -55,7 +55,8 @@ export default {
     },
     color: {
       type: String,
-      default: '#19ce60'
+      //default: '#19ce60'
+      default: 'txColor'
     }
   },
   setup(props) {

@@ -6,9 +6,9 @@
                 <span>首页 ></span>
                 <span class=" ml-1">搜索 ></span>
                 <span class=" ml-1">{{ brides.describe }} ></span>
-                <span class="text-green-400 ml-1">{{ brides.name }}</span>
+                <span class="primary-color ml-1">{{ brides.name }}</span>
                 <span class="mr-1 ml-3">|</span>
-                <span>为您找到 <span class=" text-green-400">{{ showListlength }}</span> 个结果</span>
+                <span>为您找到 <span class=" primary-color">{{ showListlength }}</span> 个结果</span>
             </div>
             <div class=" w-full">
                 <div v-for="items, index in SearchList " :key="items.id" class=" flex minheight h-10 mb-4">
@@ -18,7 +18,7 @@
                     <div class="w-10/12 text-sm text-gray-500">
                         <ul class="h-full flex items-center flex-wrap ">
                             <li v-for="item, indexs in items.childrens " :key="indexs" class="hover-green w-1/12 "
-                                :class="[item.name == brides.name ? 'color-green' : '']" @click="snedSearch(item)">
+                                :class="[item.name == brides.name ? 'primary-color' : '']" @click="snedSearch(item)">
                                 <a>{{ item.name }}</a>
                             </li>
                         </ul>
@@ -105,7 +105,5 @@ export default {
     min-height: 3.5rem;
 }
 
-.color-green {
-    color: #19ce06;
-}
+
 </style>
